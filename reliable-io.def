@@ -1,0 +1,15 @@
+LIBRARY reliable-io
+    EXPORTS
+        reliable_init
+        reliable_term
+        reliable_log_level
+        reliable_default_config
+        reliable_endpoint_create
+        reliable_endpoint_update
+        reliable_endpoint_send_packet
+        reliable_endpoint_receive_packet
+        reliable_endpoint_reset
+        reliable_endpoint_next_packet_sequence
+        reliable_endpoint_get_acks
+        reliable_endpoint_clear_acks
+        reliable_endpoint_destroy
