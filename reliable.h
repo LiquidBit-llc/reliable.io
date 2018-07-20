@@ -135,7 +135,7 @@ void reliable_endpoint_destroy( struct reliable_endpoint_t * endpoint );
 
 void reliable_log_level( int level );
 
-void reliable_set_printf_function( int (*function)( RELIABLE_CONST char *, ... ) );
+void reliable_set_printf_function( int (*function)( RELIABLE_CONST char *) );
 
 extern void (*netcode_assert_function)( RELIABLE_CONST char *, RELIABLE_CONST char *, RELIABLE_CONST char * file, int line );
 

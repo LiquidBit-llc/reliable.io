@@ -55,7 +55,7 @@ static void default_assert_handler( RELIABLE_CONST char * condition, RELIABLE_CO
 }
 
 static int log_level = 0;
-static int (*printf_function)( RELIABLE_CONST char *, ... ) = ( int (*)( RELIABLE_CONST char *, ... ) ) printf;
+static int (*printf_function)( RELIABLE_CONST char *) = ( int (*)( RELIABLE_CONST char *) ) printf;
 void (*reliable_assert_function)( RELIABLE_CONST char *, RELIABLE_CONST char *, RELIABLE_CONST char * file, int line ) = default_assert_handler;
 
 void reliable_log_level( int level )
@@ -63,7 +63,7 @@ void reliable_log_level( int level )
     log_level = level;
 }
 
-void reliable_set_printf_function( int (*function)( RELIABLE_CONST char *, ... ) )
+void reliable_set_printf_function( int (*function)( RELIABLE_CONST char *) )
 {
     reliable_assert( function );
     printf_function = function;
@@ -84,7 +84,7 @@ void reliable_printf( int level, RELIABLE_CONST char * format, ... )
     va_start( args, format );
     char buffer[4*1024];
     vsprintf( buffer, format, args );
-    printf_function( "%s", buffer );
+    printf_function( buffer );
     va_end( args );
 }
 
