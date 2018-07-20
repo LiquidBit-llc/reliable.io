@@ -1,6 +1,7 @@
 LIBRARY reliable-io
     EXPORTS
         reliable_init
+        reliable_set_printf_function
         reliable_term
         reliable_log_level
         reliable_default_config
