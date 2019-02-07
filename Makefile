@@ -12,7 +12,7 @@ $(TARGET): reliable.o
 	$(CC) -shared -o $@ $^
 
 reliable.o: reliable.c
-	$(CC) $< -ffast-math -O3 -msse2 -Wall -Wextra -fPIC -c -g -o $@
+	$(CC) $< -ffast-math -O3 -msse2 -Wall -Wextra -fPIC -c -o $@
 	
 .PHONY: clean
 
