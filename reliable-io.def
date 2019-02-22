@@ -10,6 +10,7 @@ LIBRARY reliable-io
         reliable_endpoint_send_packet
         reliable_endpoint_receive_packet
         reliable_endpoint_reset
+        reliable_endpoint_rtt
         reliable_endpoint_next_packet_sequence
         reliable_endpoint_get_acks
         reliable_endpoint_clear_acks
