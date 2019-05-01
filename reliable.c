@@ -1,7 +1,7 @@
 /*
-    reliable.io reference implementation
+    reliable.io
 
-    Copyright © 2017, The Network Protocol Company, Inc.
+    Copyright © 2017 - 2019, The Network Protocol Company, Inc.
 
     Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -261,6 +261,16 @@ void * reliable_sequence_buffer_insert( struct reliable_sequence_buffer_t * sequ
     int index = sequence % sequence_buffer->num_entries;
     sequence_buffer->entry_sequence[index] = sequence;
     return sequence_buffer->entry_data + index * sequence_buffer->entry_stride;
+}
+
+void reliable_sequence_buffer_advance( struct reliable_sequence_buffer_t * sequence_buffer, uint16_t sequence )
+{
+    reliable_assert( sequence_buffer );
+    if ( reliable_sequence_greater_than( sequence + 1, sequence_buffer->sequence ) )
+    {
+        reliable_sequence_buffer_remove_entries( sequence_buffer, sequence_buffer->sequence, sequence, NULL );
+        sequence_buffer->sequence = sequence + 1;
+    }
 }
 
 void * reliable_sequence_buffer_insert_with_cleanup( struct reliable_sequence_buffer_t * sequence_buffer, 
@@ -1084,6 +1094,8 @@ void reliable_endpoint_receive_packet( struct reliable_endpoint_t * endpoint, ui
             struct reliable_received_packet_data_t * received_packet_data = (struct reliable_received_packet_data_t*) 
                 reliable_sequence_buffer_insert( endpoint->received_packets, sequence );
 
+            reliable_sequence_buffer_advance( endpoint->fragment_reassembly, sequence );
+
             reliable_assert( received_packet_data );
 
             received_packet_data->time = endpoint->time;
@@ -1171,6 +1183,8 @@ void reliable_endpoint_receive_packet( struct reliable_endpoint_t * endpoint, ui
                 endpoint->counters[RELIABLE_ENDPOINT_COUNTER_NUM_FRAGMENTS_INVALID]++;
                 return;
             }
+
+            reliable_sequence_buffer_advance( endpoint->received_packets, sequence );
 
             int packet_buffer_size = RELIABLE_MAX_PACKET_HEADER_BYTES + num_fragments * endpoint->config.fragment_size;
 
@@ -1815,7 +1829,7 @@ static void test_acks()
     uint8_t receiver_acked_packet[TEST_ACKS_NUM_ITERATIONS];
     memset( receiver_acked_packet, 0, sizeof( receiver_acked_packet ) );
     int receiver_num_acks;
-    uint16_t * receiver_acks = reliable_endpoint_get_acks( context.sender, &receiver_num_acks );
+    uint16_t * receiver_acks = reliable_endpoint_get_acks( context.receiver, &receiver_num_acks );
     for ( i = 0; i < receiver_num_acks; ++i )
     {
         if ( receiver_acks[i] < TEST_ACKS_NUM_ITERATIONS )
@@ -2028,6 +2042,73 @@ void test_packets()
     reliable_endpoint_destroy( context.sender );
     reliable_endpoint_destroy( context.receiver );
 }
+
+void test_sequence_buffer_rollover()
+{
+    double time = 100.0;
+
+    struct test_context_t context;
+    memset( &context, 0, sizeof( context ) );
+    
+    struct reliable_config_t sender_config;
+    struct reliable_config_t receiver_config;
+
+    reliable_default_config( &sender_config );
+    reliable_default_config( &receiver_config );
+
+    sender_config.fragment_above = 500;
+    receiver_config.fragment_above = 500;
+
+#if defined(_MSC_VER)
+    strcpy_s( sender_config.name, sizeof( sender_config.name ), "sender" );
+#else
+    strcpy( sender_config.name, "sender" );
+#endif
+    sender_config.context = &context;
+    sender_config.index = 0;
+    sender_config.transmit_packet_function = &test_transmit_packet_function;
+    sender_config.process_packet_function = &test_process_packet_function;
+
+#if defined(_MSC_VER)
+    strcpy_s( receiver_config.name, sizeof( receiver_config.name ), "receiver" );
+#else
+    strcpy( receiver_config.name, "receiver" );
+#endif
+    receiver_config.context = &context;
+    receiver_config.index = 1;
+    receiver_config.transmit_packet_function = &test_transmit_packet_function;
+    receiver_config.process_packet_function = &test_process_packet_function;
+
+    context.sender = reliable_endpoint_create( &sender_config, time );
+    context.receiver = reliable_endpoint_create( &receiver_config, time );
+
+    int num_packets_sent = 0;
+    int i;
+    for (i = 0; i <= 32767; ++i)
+    {
+        uint8_t packet_data[16];
+        int packet_bytes = sizeof( packet_data ) / sizeof( uint8_t );
+        reliable_endpoint_next_packet_sequence( context.sender );
+        reliable_endpoint_send_packet( context.sender, packet_data, packet_bytes );
+
+        ++num_packets_sent;
+    }
+
+    uint8_t packet_data[TEST_MAX_PACKET_BYTES];
+    int packet_bytes = sizeof( packet_data ) / sizeof( uint8_t );
+    reliable_endpoint_next_packet_sequence( context.sender );
+    reliable_endpoint_send_packet( context.sender, packet_data, packet_bytes );
+    ++num_packets_sent;
+
+    RELIABLE_CONST uint64_t * receiver_counters = reliable_endpoint_counters( context.receiver );
+
+    check( receiver_counters[RELIABLE_ENDPOINT_COUNTER_NUM_PACKETS_RECEIVED] == (uint16_t) num_packets_sent );
+    check( receiver_counters[RELIABLE_ENDPOINT_COUNTER_NUM_FRAGMENTS_INVALID] == 0 );
+
+    reliable_endpoint_destroy( context.sender );
+    reliable_endpoint_destroy( context.receiver );
+}
+
 #define RUN_TEST( test_function )                                           \
     do                                                                      \
     {                                                                       \
@@ -2047,6 +2128,7 @@ void reliable_test()
         RUN_TEST( test_acks );
         RUN_TEST( test_acks_packet_loss );
         RUN_TEST( test_packets );
+        RUN_TEST( test_sequence_buffer_rollover );
     }
 }
 

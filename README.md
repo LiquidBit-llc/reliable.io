@@ -2,41 +2,41 @@
 
 # Introduction
 
-**reliable.io** is a simple reliability layer for UDP-based protocols.
-
-It's designed for situations where there is a bidirectional flow of packets, for example, real-time action games like first person shooters.
+**reliable.io** is a packet acknowlegement system for UDP protocols.
 
 It has the following features: 
 
-1. Identifies which packets were received by the other side (acks)
+1. Identifies which packets are received by the other side
+2. Packet fragmentation and reassembly
+3. RTT and packet loss estimates
 
-2. Packet fragmentation and re-assembly (so you can send packets larger than MTU)
-
-3. Estimates for round-trip time and packet loss
-
-# Usage
-
-**reliable.io** is a low-level library that is designed to be used with your existing network layer. 
-
-It has no networking support, and no opinion on what topology you should use. Its only requirement is that you have one reliable.io endpoint on each side of a connection.
-
-If you would like a secure client/server communications layer to use with reliable.io, I recommend [netcode.io](http://www.netcode.io)
-
-If you want something higher level that implements reliable-ordered messages on top of reliable.io, try [yojimbo](http://libyojimbo.com).
-
-There is also a port of reliable.io to JavaScript here: https://github.com/mreinstein/reliable.io.js
+reliable.io is stable and well tested having been used in AAA game projects for over 2 years now.
 
 # Author
 
-The author of this library is [Glenn Fiedler](https://www.linkedin.com/in/glennfiedler), a recognized expert in the field of game network programming with over 15 years experience in the game industry.
+The author of this library is [Glenn Fiedler](https://www.linkedin.com/in/glennfiedler).
 
 Glenn wrote an article series about the development of this library called [Building a Game Network Protocol](http://gafferongames.com/2016/05/10/building-a-game-network-protocol/).
 
-Open source libraries by the same author include: [yojimbo](http://libyojimbo.com) and [netcode.io](http://netcode.io)
+Open source libraries by the same author include: [netcode.io](http://netcode.io) and [yojimbo](http://libyojimbo.com)
+
+# Source Code
+
+This repository holds the implementation of reliable.io in C.
+
+Other reliable.io repositories include:
+
+* [reliable.io Rust implementation](https://github.com/jaynus/reliable.io)
+
+# Contributors
+
+These people are awesome:
+
+* [Walter Pearce](https://github.com/jaynus) - Rust Implementation
 
 # Sponsors
 
-**reliable.io** is generously sponsored by:
+**reliable.io** was generously sponsored by:
 
 * **Gold Sponsors**
     * [Remedy Entertainment](http://www.remedygames.com/)

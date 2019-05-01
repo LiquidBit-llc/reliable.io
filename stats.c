@@ -1,7 +1,7 @@
 /*
-    reliable.io reference implementation
+    reliable.io
 
-    Copyright © 2017, The Network Protocol Company, Inc.
+    Copyright © 2017 - 2019, The Network Protocol Company, Inc.
 
     Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -181,7 +181,7 @@ void stats_initialize()
     strcpy( server_config.name, "server" );
 #endif
     server_config.context = &global_context;
-    client_config.index = 1;
+    server_config.index = 1;
     server_config.transmit_packet_function = &test_transmit_packet_function;
     server_config.process_packet_function = &test_process_packet_function;
 
