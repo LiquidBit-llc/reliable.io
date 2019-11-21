@@ -1,26 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reliable-io", "reliable-io.vcxproj", "{A8C1DE55-E5F1-4751-A723-F95834ECDE42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Durango = Debug|Durango
 		Debug|NX32 = Debug|NX32
 		Debug|NX64 = Debug|NX64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Develop|Durango = Develop|Durango
 		Develop|NX32 = Develop|NX32
 		Develop|NX64 = Develop|NX64
 		Develop|x64 = Develop|x64
 		Develop|x86 = Develop|x86
+		Release|Durango = Release|Durango
 		Release|NX32 = Release|NX32
 		Release|NX64 = Release|NX64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|Durango.ActiveCfg = Debug|Durango
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|Durango.Build.0 = Debug|Durango
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX32.ActiveCfg = Debug|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX32.Build.0 = Debug|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX64.ActiveCfg = Debug|NX64
@@ -29,6 +34,8 @@ Global
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x64.Build.0 = Debug|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x86.ActiveCfg = Debug|Win32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x86.Build.0 = Debug|Win32
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|Durango.ActiveCfg = Develop|Durango
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|Durango.Build.0 = Develop|Durango
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX32.ActiveCfg = Develop|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX32.Build.0 = Develop|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX64.ActiveCfg = Develop|NX64
@@ -37,6 +44,8 @@ Global
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x64.Build.0 = Develop|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x86.ActiveCfg = Develop|Win32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x86.Build.0 = Develop|Win32
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|Durango.ActiveCfg = Release|Durango
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|Durango.Build.0 = Release|Durango
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX32.ActiveCfg = Release|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX32.Build.0 = Release|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX64.ActiveCfg = Release|NX64
@@ -48,5 +57,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D371AEF-7C4F-4C0F-8C7D-5EB9BEE3AF56}
 	EndGlobalSection
 EndGlobal
