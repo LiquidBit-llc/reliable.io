@@ -75,9 +75,15 @@ extern "C" {
 #endif
 #endif
 
-int reliable_init();
+	#if defined (_ORBIS_)
+#define EXPORT __declspec( dllexport )
+#else
+#define EXPORT
+#endif
 
-void reliable_term();
+EXPORT int reliable_init();
+
+EXPORT void reliable_term();
 
 struct reliable_config_t
 {
@@ -103,39 +109,39 @@ struct reliable_config_t
     void (*free_function)(void*,void*);
 };
 
-void reliable_default_config( struct reliable_config_t * config );
+EXPORT void reliable_default_config( struct reliable_config_t * config );
 
-struct reliable_endpoint_t * reliable_endpoint_create( struct reliable_config_t * config, double time );
+EXPORT struct reliable_endpoint_t * reliable_endpoint_create( struct reliable_config_t * config, double time );
 
-uint16_t reliable_endpoint_next_packet_sequence( struct reliable_endpoint_t * endpoint );
+EXPORT uint16_t reliable_endpoint_next_packet_sequence( struct reliable_endpoint_t * endpoint );
 
-void reliable_endpoint_send_packet( struct reliable_endpoint_t * endpoint, uint8_t * packet_data, int packet_bytes );
+EXPORT void reliable_endpoint_send_packet( struct reliable_endpoint_t * endpoint, uint8_t * packet_data, int packet_bytes );
 
-void reliable_endpoint_receive_packet( struct reliable_endpoint_t * endpoint, uint8_t * packet_data, int packet_bytes );
+EXPORT void reliable_endpoint_receive_packet( struct reliable_endpoint_t * endpoint, uint8_t * packet_data, int packet_bytes );
 
-void reliable_endpoint_free_packet( struct reliable_endpoint_t * endpoint, void * packet );
+EXPORT void reliable_endpoint_free_packet( struct reliable_endpoint_t * endpoint, void * packet );
 
-uint16_t * reliable_endpoint_get_acks( struct reliable_endpoint_t * endpoint, int * num_acks );
+EXPORT uint16_t * reliable_endpoint_get_acks( struct reliable_endpoint_t * endpoint, int * num_acks );
 
-void reliable_endpoint_clear_acks( struct reliable_endpoint_t * endpoint );
+EXPORT void reliable_endpoint_clear_acks( struct reliable_endpoint_t * endpoint );
 
-void reliable_endpoint_reset( struct reliable_endpoint_t * endpoint );
+EXPORT void reliable_endpoint_reset( struct reliable_endpoint_t * endpoint );
 
-void reliable_endpoint_update( struct reliable_endpoint_t * endpoint, double time );
+EXPORT void reliable_endpoint_update( struct reliable_endpoint_t * endpoint, double time );
 
-float reliable_endpoint_rtt( struct reliable_endpoint_t * endpoint );
+EXPORT float reliable_endpoint_rtt( struct reliable_endpoint_t * endpoint );
 
-float reliable_endpoint_packet_loss( struct reliable_endpoint_t * endpoint );
+EXPORT float reliable_endpoint_packet_loss( struct reliable_endpoint_t * endpoint );
 
-void reliable_endpoint_bandwidth( struct reliable_endpoint_t * endpoint, float * sent_bandwidth_kbps, float * received_bandwidth_kbps, float * acked_bandwidth_kpbs );
+EXPORT void reliable_endpoint_bandwidth( struct reliable_endpoint_t * endpoint, float * sent_bandwidth_kbps, float * received_bandwidth_kbps, float * acked_bandwidth_kpbs );
 
 RELIABLE_CONST uint64_t * reliable_endpoint_counters( struct reliable_endpoint_t * endpoint );
 
-void reliable_endpoint_destroy( struct reliable_endpoint_t * endpoint );
+EXPORT void reliable_endpoint_destroy( struct reliable_endpoint_t * endpoint );
 
-void reliable_log_level( int level );
+EXPORT void reliable_log_level( int level );
 
-void reliable_set_printf_function( int (*function)( RELIABLE_CONST char *) );
+EXPORT void reliable_set_printf_function( int (*function)( RELIABLE_CONST char *) );
 
 extern void (*netcode_assert_function)( RELIABLE_CONST char *, RELIABLE_CONST char *, RELIABLE_CONST char * file, int line );
 
