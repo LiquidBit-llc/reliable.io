@@ -1,64 +1,73 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reliable-io", "reliable-io.vcxproj", "{A8C1DE55-E5F1-4751-A723-F95834ECDE42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Durango = Debug|Durango
-		Debug|ORBIS = Debug|ORBIS
+		Debug|GGP = Debug|GGP
 		Debug|NX32 = Debug|NX32
 		Debug|NX64 = Debug|NX64
+		Debug|ORBIS = Debug|ORBIS
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Develop|Durango = Develop|Durango
-		Develop|ORBIS = Develop|ORBIS
+		Develop|GGP = Develop|GGP
 		Develop|NX32 = Develop|NX32
 		Develop|NX64 = Develop|NX64
+		Develop|ORBIS = Develop|ORBIS
 		Develop|x64 = Develop|x64
 		Develop|x86 = Develop|x86
 		Release|Durango = Release|Durango
-		Release|ORBIS = Release|ORBIS
+		Release|GGP = Release|GGP
 		Release|NX32 = Release|NX32
 		Release|NX64 = Release|NX64
+		Release|ORBIS = Release|ORBIS
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|Durango.ActiveCfg = Debug|Durango
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|Durango.Build.0 = Debug|Durango
-		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|ORBIS.ActiveCfg = Debug|ORBIS
-		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|ORBIS.Build.0 = Debug|ORBIS
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|GGP.ActiveCfg = Debug|GGP
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|GGP.Build.0 = Debug|GGP
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX32.ActiveCfg = Debug|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX32.Build.0 = Debug|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX64.ActiveCfg = Debug|NX64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|NX64.Build.0 = Debug|NX64
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|ORBIS.ActiveCfg = Debug|ORBIS
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|ORBIS.Build.0 = Debug|ORBIS
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x64.ActiveCfg = Debug|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x64.Build.0 = Debug|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x86.ActiveCfg = Debug|Win32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Debug|x86.Build.0 = Debug|Win32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|Durango.ActiveCfg = Develop|Durango
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|Durango.Build.0 = Develop|Durango
-		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|ORBIS.ActiveCfg = Develop|ORBIS
-		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|ORBIS.Build.0 = Develop|ORBIS
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|GGP.ActiveCfg = Develop|GGP
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|GGP.Build.0 = Develop|GGP
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX32.ActiveCfg = Develop|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX32.Build.0 = Develop|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX64.ActiveCfg = Develop|NX64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|NX64.Build.0 = Develop|NX64
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|ORBIS.ActiveCfg = Develop|ORBIS
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|ORBIS.Build.0 = Develop|ORBIS
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x64.ActiveCfg = Develop|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x64.Build.0 = Develop|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x86.ActiveCfg = Develop|Win32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Develop|x86.Build.0 = Develop|Win32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|Durango.ActiveCfg = Release|Durango
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|Durango.Build.0 = Release|Durango
-		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|ORBIS.ActiveCfg = Release|ORBIS
-		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|ORBIS.Build.0 = Release|ORBIS
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|GGP.ActiveCfg = Release|GGP
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|GGP.Build.0 = Release|GGP
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX32.ActiveCfg = Release|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX32.Build.0 = Release|NX32
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX64.ActiveCfg = Release|NX64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|NX64.Build.0 = Release|NX64
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|ORBIS.ActiveCfg = Release|ORBIS
+		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|ORBIS.Build.0 = Release|ORBIS
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|x64.ActiveCfg = Release|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|x64.Build.0 = Release|x64
 		{A8C1DE55-E5F1-4751-A723-F95834ECDE42}.Release|x86.ActiveCfg = Release|Win32
